@@ -32,6 +32,7 @@ group :development, :test do
   gem 'capybara'
   # Use Ffaker for create custom data
   gem 'ffaker'
+  gem "shoulda-matchers", require: false
 end
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
