@@ -2,10 +2,12 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
+gem 'unicorn'
+gem "unicorn-rails"
 # Use mysql2 as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
-#gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 4.0.3'
 #gem 'bootstrap-sass', '~> 3.2.0'
 #gem "font-awesome-rails"
 #gem 'autoprefixer-rails'
@@ -59,3 +61,9 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
+gem 'compass-rails'
+gem 'furatto'
+gem 'font-awesome-rails'
+gem 'simple_form'

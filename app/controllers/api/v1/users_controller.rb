@@ -3,6 +3,9 @@ module Api::V1
     respond_to :json
     before_action :set_user, only: [:update, :show, :destroy]
 
+    def index
+      render json: User.all, status: 200
+    end
     def show
       respond_with @user
     end
@@ -31,7 +34,7 @@ module Api::V1
 
     private
     def set_user
-      @user = User.find(params[:id])
+      render nothing: true, status: 404 unless @user = User.find_by(id: params[:id])
     end
 
     def user_params
