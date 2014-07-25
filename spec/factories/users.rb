@@ -8,5 +8,11 @@ FactoryGirl.define do
     factory :user_invalid do
       email nil
     end
+    factory :user_update do
+      email { Faker::Internet.email }
+    end
+    factory :user_update_invalid do
+      email { Faker::Internet.name }
+    end
   end
 end
