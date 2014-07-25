@@ -102,5 +102,13 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
 
   end # Patch #update
 
+  describe 'Delete #destroy' do
+    before(:each) do
+      delete :destroy, { id: user.id }, format: :json
+    end
 
+    let(:user) { FactoryGirl.create :user }
+
+    it { should respond_with(204) }
+  end #Delete #destroy
 end

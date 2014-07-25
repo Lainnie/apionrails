@@ -1,7 +1,7 @@
 module Api::V1
   class UsersController < ApplicationController
     respond_to :json
-    before_action :set_user, only: [:update, :show]
+    before_action :set_user, only: [:update, :show, :destroy]
 
     def show
       respond_with @user
@@ -22,6 +22,11 @@ module Api::V1
       else
         render json: { errors: @user.errors }, status: 422
       end
+    end
+
+    def destroy
+      @user.destroy
+      render nothing: true, status: 204
     end
 
     private
