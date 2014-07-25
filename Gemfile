@@ -30,6 +30,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Use Capibara for acceptance testing
   gem 'capybara'
+  # Use Ffaker for create custom data
+  gem 'ffaker'
 end
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
