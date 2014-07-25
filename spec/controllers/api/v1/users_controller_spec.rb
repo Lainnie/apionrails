@@ -14,7 +14,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
     end
 
     it 'return user' do
-      user_response = json response.body
+      user_response = json_response
       expect(user_response[:email]).to eq(@user.email)
     end
 
@@ -25,7 +25,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
     context 'When is successfully created' do
       before(:each) do
         post :create, { user: valid_attributes }, format: :json
-        @user_response = json(response.body)
+        @user_response = json_response
       end
 
       let(:valid_attributes) { FactoryGirl.attributes_for(:user) }
@@ -40,7 +40,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
     context 'When creation fail' do
       before(:each) do
         post :create, { user: invalid_attributes }, format: :json
-        @user_response = json(response.body)
+        @user_response = json_response
       end
 
       let(:invalid_attributes) { FactoryGirl.attributes_for(:user_invalid) }
@@ -66,7 +66,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
           id: user.id,
           user: { email: user_update[:email] }
         }, format: :json
-        @user_response = json(response.body)
+        @user_response = json_response
       end
 
       let(:user_update) { FactoryGirl.attributes_for :user_update }
@@ -84,7 +84,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
           id: user.id,
           user: { email: user_update[:email] }
         }, format: :json
-        @user_response = json(response.body)
+        @user_response = json_response
       end
 
       let(:user_update) { FactoryGirl.attributes_for(:user_update_invalid) }
