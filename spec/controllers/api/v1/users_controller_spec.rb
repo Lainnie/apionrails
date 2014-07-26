@@ -3,14 +3,10 @@ require 'pp'
 
 RSpec.describe Api::V1::UsersController, :type => :controller do
 
-  before(:each) do
-    request.headers['Accept'] = 'application/vnd.marketplace.v1'
-  end
-
   describe 'Get #show' do
     before(:each) do
       @user = FactoryGirl.create :user
-      get :show, id: @user.id, format: :json
+      get :show, id: @user.id
     end
 
     it 'return user' do
@@ -24,7 +20,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
   describe 'Post #create' do
     context 'When is successfully created' do
       before(:each) do
-        post :create, { user: valid_attributes }, format: :json
+        post :create, { user: valid_attributes }
         @user_response = json_response
       end
 
@@ -39,7 +35,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
 
     context 'When creation fail' do
       before(:each) do
-        post :create, { user: invalid_attributes }, format: :json
+        post :create, { user: invalid_attributes }
         @user_response = json_response
       end
 
@@ -65,7 +61,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
         patch :update, {
           id: user.id,
           user: { email: user_update[:email] }
-        }, format: :json
+        }
         @user_response = json_response
       end
 
@@ -83,7 +79,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
         patch :update, {
           id: user.id,
           user: { email: user_update[:email] }
-        }, format: :json
+        }
         @user_response = json_response
       end
 
@@ -104,7 +100,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
 
   describe 'Delete #destroy' do
     before(:each) do
-      delete :destroy, { id: user.id }, format: :json
+      delete :destroy, { id: user.id }
     end
 
     let(:user) { FactoryGirl.create :user }
